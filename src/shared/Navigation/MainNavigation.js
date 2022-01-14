@@ -8,22 +8,25 @@ import Backdrop from '../../shared/components/Backdrop/Backdrop';
 const MainNavigation = (props) => {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
 
- const setDrawerHandler = ()=>{
-   setDrawerIsOpen(prevState => !prevState)
- }
- 
+  const setDrawerHandler = () => {
+    setDrawerIsOpen((prevState) => !prevState);
+  };
+
   return (
     <>
-    {drawerIsOpen && <Backdrop onClick={setDrawerHandler}/>}
-      {drawerIsOpen && (
-        <SideDrawer >
-          <nav className="main-navigation__drawer-nav">
-            <NavLinks />
-          </nav>
-        </SideDrawer>
-      )}
-      <MainHeader >
-        <button onClick={setDrawerHandler} className="main-navigation__menu-btn">
+      {drawerIsOpen && <Backdrop onClick={setDrawerHandler} />}
+
+      <SideDrawer show={drawerIsOpen}>
+        <nav className="main-navigation__drawer-nav">
+          <NavLinks />
+        </nav>
+      </SideDrawer>
+
+      <MainHeader>
+        <button
+          onClick={setDrawerHandler}
+          className="main-navigation__menu-btn"
+        >
           <span />
           <span />
           <span />
