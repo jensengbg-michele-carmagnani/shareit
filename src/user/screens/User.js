@@ -8,7 +8,14 @@ const User = () => {
       name: 'Michele',
       image:
         'https://www.pngall.com/wp-content/uploads/2016/04/Happy-Person-Free-Download-PNG.png',
-      placeCount: 3,
+      placeCount: 1,
+    },
+    {
+      id: 'u2',
+      name: 'Marco',
+      image:
+        'https://www.pngall.com/wp-content/uploads/2016/04/Happy-Person-Free-Download-PNG.png',
+      placeCount: 1,
     },
   ];
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import User from './user/screens/User';
-import Places from './places/screens/Places';
+import UserPlaces from './places/screens/UserPlaces';
 import MainNavigation from './shared/Navigation/MainNavigation';
 import AddPlace from './places/screens/AddPlace';
 function App() {
@@ -12,7 +12,7 @@ function App() {
         <Routes>
           {' '}
           <Route path="/user" element={<User />}></Route>
-          <Route path="/u1/places" element={<Places />}></Route>
+          <Route path="/:id/places" element={<UserPlaces />}/>
           <Route path="/places/new" element={<AddPlace />} />
           <Route path="*" element={<Navigate to="/user" />}></Route>
         </Routes>
