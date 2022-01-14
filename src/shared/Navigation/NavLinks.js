@@ -5,18 +5,38 @@ import './NavLinks.css';
 
 const NavLinks = (props) => {
   return (
-    <ul>
+    <ul className="nav-links">
       <li>
-        <NavLink  to="/">ALL USERS</NavLink>
+        <NavLink
+          className={(navData) => (navData.isActive ? 'active' : '')}
+          to="/user"
+        >
+          ALL USERS
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/u1/places">MY PLACES</NavLink>
+        <NavLink
+          className={(navData) => (navData.isActive ? 'active' : '')}
+          to="/u1/places"
+        >
+          MY PLACES
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/places/new">ADD PLACES</NavLink>
+        <NavLink
+          className={(navData) => (navData.isActive ? 'active' : '')}
+          to="/places/new"
+        >
+          ADD PLACES
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/auth">AUTHENTICATE</NavLink>
+        <NavLink
+          className={(navData) => (navData.isActive ? 'active' : '')}
+          to="/auth"
+        >
+          AUTHENTICATE
+        </NavLink>
       </li>
     </ul>
   );
