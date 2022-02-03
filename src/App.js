@@ -4,16 +4,17 @@ import User from './user/screens/User';
 import UserPlaces from './places/screens/UserPlaces';
 import MainNavigation from './shared/Navigation/MainNavigation';
 import NewPlace from './places/screens/NewPlace';
+import UpdatePlace from './places/screens/UpdatePlace';
 function App() {
   return (
     <>
       <MainNavigation />
       <main>
         <Routes>
-          {' '}
           <Route path="/user" element={<User />}></Route>
           <Route path="/:id/places" element={<UserPlaces />} />
           <Route path="/places/new" element={<NewPlace />} />
+          <Route path="/places/:id" element={<UpdatePlace />} />
           <Route path="*" element={<Navigate to="/user" />}></Route>
         </Routes>
       </main>
