@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 const UserPlaces = () => {
   const userId = useParams().id;
 
-  const PLACES = [
+   const PLACES = [
     {
       id: 'p1',
       title: 'Empire state building',
@@ -21,7 +21,7 @@ const UserPlaces = () => {
     },
     {
       id: 'p2',
-      title: 'Empire state building',
+      title: 'Emp. state building',
       description: 'One of the most famous places in the world',
       imageUrl:
         'https://image.newyork.se/wp-content/uploads/2013/02/Empire-State-Building-Tickets.jpg',

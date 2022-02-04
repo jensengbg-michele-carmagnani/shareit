@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer } from 'react';
+import React from 'react';
 
 import Input from '../../shared/components/UI/Input/Input';
 import Button from '../../shared/FormElement/Button/Button';

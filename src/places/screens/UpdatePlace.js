@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Input from '../../shared/components/UI/Input/Input';
 import Button from '../../shared/FormElement/Button/Button';
+import Card from '../../shared/components/UI/Card/Card';
 import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH,
@@ -26,7 +27,7 @@ const PLACES = [
   },
   {
     id: 'p2',
-    title: 'Empire state building',
+    title: 'Emp. state building',
     description: 'One of the most famous places in the world',
     imageUrl:
       'https://image.newyork.se/wp-content/uploads/2013/02/Empire-State-Building-Tickets.jpg',
@@ -73,28 +74,33 @@ const UpdatePlace = () => {
   const placeUpdateSubmitHandler = (e) => {
     e.preventDefault();
   };
+  
   useEffect(() => {
-    setFormData(
-      {
-        title: {
-          value: idetifyPlace.title,
-          isValid: true,
+    if (idetifyPlace) {
+      setFormData(
+        {
+          title: {
+            value: idetifyPlace.title,
+            isValid: true,
+          },
+          description: {
+            value: idetifyPlace.description,
+            isValid: true,
+          },
         },
-        description: {
-          value: idetifyPlace.description,
-          isValid: true,
-        },
-      },
-      true
-    );
+        true
+      );
+    }
     setIsloading(false);
   }, [setFormData, idetifyPlace]);
 
   if (!idetifyPlace) {
     return (
-      <div>
-        <h1 className="center">Could not find place!</h1>
-      </div>
+      <Card style={{width: '50%', margin: 'auto'}}>
+        <div>
+          <h1 className="center">Could not find place!</h1>
+        </div>
+      </Card>
     );
   }
 
