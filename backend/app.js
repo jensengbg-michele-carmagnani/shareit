@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 // routes
 const placeRoutes = require('./routes/places-routes');
 
-app.use('/', placeRoutes);
+app.use('/api/places', placeRoutes);
 
 const PORT = process.env.PORT;
 
