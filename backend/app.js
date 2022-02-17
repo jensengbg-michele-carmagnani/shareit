@@ -1,15 +1,21 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-require('dotenv').config();
+const express = require("express");
+const bodyParser = require("body-parser");
+require("dotenv").config();
 
 const app = express();
 app.use(bodyParser.json());
 // app.use(express.json());
 
 // routes
-const placeRoutes = require('./routes/places-routes');
+const placeRoutes = require("./routes/places-routes");
 
-app.use('/api/places', placeRoutes);
+app.use("/api/places", placeRoutes);
+app.use((error, req, res, next) => {
+  if (res.headerSent) {
+    return next(error);
+  }
+  res.status(error.code || 500).send({message: error.message || 'An unknow'});
+});
 
 const PORT = process.env.PORT;
 

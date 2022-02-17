@@ -1,57 +1,77 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-
 
 const PLACES = [
   {
-    id: 'p1',
-    title: 'Empire state building',
-    description: 'One of the most famous places in the world',
+    id: "p1",
+    title: "Empire state building",
+    description: "One of the most famous places in the world",
     imageUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Manhattan_at_Dusk_by_slonecker.jpg/300px-Manhattan_at_Dusk_by_slonecker.jpg',
-    address: '20 W 34th St, New York, NY 10001, Stati Uniti',
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Manhattan_at_Dusk_by_slonecker.jpg/300px-Manhattan_at_Dusk_by_slonecker.jpg",
+    address: "20 W 34th St, New York, NY 10001, Stati Uniti",
     location: {
-      lat: +'40.7484405',
-      lng: parseFloat('-73.9878531,17'),
+      lat: +"40.7484405",
+      lng: parseFloat("-73.9878531,17"),
     },
-    creator: 'u1',
+    creator: "u1",
   },
   {
-    id: 'p2',
-    title: 'Emp. state building',
-    description: 'One of the most famous places in the world',
+    id: "p2",
+    title: "Emp. state building",
+    description: "One of the most famous places in the world",
     imageUrl:
-      'https://image.newyork.se/wp-content/uploads/2013/02/Empire-State-Building-Tickets.jpg',
-    address: '20 W 34th St, New York, NY 10001, Stati Uniti',
+      "https://image.newyork.se/wp-content/uploads/2013/02/Empire-State-Building-Tickets.jpg",
+    address: "20 W 34th St, New York, NY 10001, Stati Uniti",
     location: {
-      lat: +'40.7484405',
-      lng: parseFloat('-73.9878531,17'),
+      lat: +"40.7484405",
+      lng: parseFloat("-73.9878531,17"),
     },
-    creator: 'u2',
+    creator: "u2",
   },
   {
-    id: 'p3',
-    title: 'Empire state building',
-    description: 'One of the most famous places in the world',
+    id: "p3",
+    title: "Empire state building",
+    description: "One of the most famous places in the world",
     imageUrl:
-      'https://image.newyork.se/wp-content/uploads/2013/02/Empire-State-Building-Tickets.jpg',
-    address: '20 W 34th St, New York, NY 10001, Stati Uniti',
+      "https://image.newyork.se/wp-content/uploads/2013/02/Empire-State-Building-Tickets.jpg",
+    address: "20 W 34th St, New York, NY 10001, Stati Uniti",
     location: {
-      lat: +'40.7484405',
-      lng: parseFloat('-73.9878531,17'),
+      lat: +"40.7484405",
+      lng: parseFloat("-73.9878531,17"),
     },
-    creator: 'u3',
+    creator: "u3",
   },
 ];
 
-router.get('/:pid', async (req, res, next) => {
-  const placeId = req.params.pid
-  const place = PLACES.find(p=>{
-    return p.id === placeId
-  })
+router.get("/:pid", async (req, res, next) => {
+  const placeId = req.params.pid;
+  const place = PLACES.find((p) => {
+    return p.id === placeId;
+  });
+  if (!place) {
+    const msgError = {
+      message: "The location your looking is not present!",
+    };
+    return res.status(404).send(msgError.message);
+  }
 
   res.send({ place });
 });
 
+router.get("/user/:uid", async (req, res, next) => {
+  const userId = req.params.uid;
+  const place = PLACES.find((p) => {
+    return p.creator === userId;
+  });
+
+  if (!place) {
+    const msgError = {
+      message: "The location your looking is not present!",
+    };
+    return res.status(404).send(msgError.message);
+  }
+
+  res.send({ place });
+});
 
 module.exports = router;
