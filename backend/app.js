@@ -14,7 +14,7 @@ app.use((error, req, res, next) => {
   if (res.headerSent) {
     return next(error);
   }
-  res.status(error.code || 500).send({message: error.message || 'An unknow'});
+  res.status(error.code || 500).send({message: error.message || 'An unknown error occurred!'});
 });
 
 const PORT = process.env.PORT;
